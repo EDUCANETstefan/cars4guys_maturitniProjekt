@@ -1,0 +1,107 @@
+.top {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  margin-left: 70px;
+}
+
+.line {
+  border-bottom: 1px solid #e7e7e7;
+  margin: 30px;
+}
+
+body {
+  //background-image: url("https://cutewallpaper.org/21/wallpaper-4k-car/Mercedes-4k-Car-Wallpaper-Car-wallpapers.jpg");
+  background-size:cover;
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#divbody {
+  margin: 5%;
+  //background-color: rgba(255, 255, 255, 0.7);
+}
+h1 {
+  text-align: center;
+  border: solid 1px;
+  border-color: black;
+}
+
+h2 {
+  text-align: center;
+  font-size: 70px;
+  margin: 1%
+}
+h3 {
+  margin: 1%;
+  font-weight: 800;
+}
+
+ul {
+  border: black;
+}
+
+#A {
+  display: flex;
+  border: solid 2px;
+  border-color: black;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+#B {
+  display: flex;
+  justify-content: left;
+  font-size: medium;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+#C {
+  border-bottom: 2px solid #e7e7e7;
+
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  align-items: baseline;
+  height: 60%;
+  margin: 1%;
+}
+div li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.item {
+
+  width:100%;
+  justify-content: space-between;
+  margin: 0 20px;
+  text-align: center;
+}
+.item.left {
+  text-align: center;
+}
+p {
+  color: black ;
+  font-weight: 600;
+}
+li {
+  font-weight: 500;
+}
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+}

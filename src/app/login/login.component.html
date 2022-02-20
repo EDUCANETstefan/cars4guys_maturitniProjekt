@@ -1,0 +1,20 @@
+<form action="action_page.php">
+  <div class="container">
+    <h1>Login</h1>
+    <p>Zadejte své údaje pro přihlášení</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" #emailSingin placeholder="Email" name="email" id="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" #passwordSingin placeholder="Heslo" name="psw" id="psw" required>
+    <hr>
+
+    <button (click)="onSignin(emailSingin.value, passwordSingin.value)" type="submit" class="loginbtn">Přihlásit se</button>
+  </div>
+
+  <div class="container signin">
+    <p>Pokud nemáte účet <a href="register">REGISTRACE</a>.</p>
+  </div>
+</form>
