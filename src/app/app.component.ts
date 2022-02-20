@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {MyFirebaseService} from "./services/myFirebase.service";
 
 @Component({
   selector: 'app-root',
