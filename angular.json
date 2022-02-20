@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AllAboutCars": {
+    "cars4guys2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AllAboutCars",
+            "outputPath": "dist/cars4guys2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "AllAboutCars:build:production"
+              "browserTarget": "cars4guys2:build:production"
             },
             "development": {
-              "browserTarget": "AllAboutCars:build:development"
+              "browserTarget": "cars4guys2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AllAboutCars:build"
+            "browserTarget": "cars4guys2:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "AllAboutCars"
+  "defaultProject": "cars4guys2"
 }
