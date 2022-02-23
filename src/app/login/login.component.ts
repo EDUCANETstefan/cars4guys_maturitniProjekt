@@ -18,14 +18,10 @@ export class LoginComponent implements OnInit {
   }
 
   async onSignin(email:string,password:string){
-    console.log("this.firebaseService " + this.firebaseService)
     await this.firebaseService.singIn(email,password)
     if(this.firebaseService.isLoggedIn)
-      this.isSignedIn = true
-  }
-  handleLogout(){
-    this.isSignedIn = false
-
+    {this.isSignedIn = true}
+    window.open("home");
   }
 
 }

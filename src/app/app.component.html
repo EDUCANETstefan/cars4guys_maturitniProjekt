@@ -17,8 +17,8 @@
     </div>
   </div>
   <div>
-    <a href="login" class="btn-area">PŘIHLÁSIT</a>
-    <button class="btn-area">Odhlásit</button>
+    <a *ngIf="isSignedIn === false" href="login" class="btn-area">Přihlásit</a>
+    <a (click)="onSingout()" *ngIf="isSignedIn === true" class="btn-area">Odhlásit</a>
   </div>
 </header>
 

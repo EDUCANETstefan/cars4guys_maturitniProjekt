@@ -1,4 +1,4 @@
-<form action="action_page.php">
+<form (ngSubmit)="onSignup(emailSingup.value, passwordSingup.value)">
   <div class="container">
     <h1>Registrace</h1>
     <p>Vyplňte údaje pro registraci.</p>
@@ -8,14 +8,14 @@
     <input type="text" #emailSingup placeholder="Email" name="email" id="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Heslo" name="psw" id="psw" required>
+    <input type="password" #passwordSingup placeholder="Heslo" name="psw" id="psw" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" #passwordSingup placeholder="Potvrdit heslo" name="psw-repeat" id="psw-repeat" required>
+    <input type="password" #passwordSingup2 placeholder="Potvrdit heslo" name="psw-repeat" id="psw-repeat" required>
     <hr>
 
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <button (click)="onSignup(emailSingup.value, passwordSingup.value)" type="submit" class="registerbtn">Založit účet</button>
+    <button  type="submit" class="registerbtn">Založit účet</button>
   </div>
 
   <div class="container signin">

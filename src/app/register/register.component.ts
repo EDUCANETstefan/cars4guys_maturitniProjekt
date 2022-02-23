@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MyFirebaseService} from "../services/myFirebase.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +20,8 @@ export class RegisterComponent implements OnInit {
 
   async onSignup(email:string,password:string){
     await this.firebaseService.singUp(email,password)
-    if(this.firebaseService.isLoggedIn)
-      this.isSignedIn = true
+    if(this.firebaseService.isLoggedIn) { this.isSignedIn = true}
+    window.open("home");
   }
 
 

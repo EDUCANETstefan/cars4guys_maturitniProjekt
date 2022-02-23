@@ -15,6 +15,9 @@ import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
+import {FormsModule} from "@angular/forms";
+import { ZobrazeniClankuComponent } from './zobrazeni-clanku/zobrazeni-clanku.component';
+import { VytvoreniTematuComponent } from './vytvoreniTematu/vytvoreni-tematu.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import {FIREBASE_OPTIONS} from "@angular/fire/compat";
     AboutComponent,
     RegisterComponent,
     LoginComponent,
+    ZobrazeniClankuComponent,
+    VytvoreniTematuComponent,
+
 
   ],
   imports: [
@@ -34,6 +40,7 @@ import {FIREBASE_OPTIONS} from "@angular/fire/compat";
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
+    FormsModule
   ],
   providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}],
   bootstrap: [AppComponent]

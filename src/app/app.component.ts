@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {MyFirebaseService} from "./services/myFirebase.service";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,17 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class AppComponent {
   title = 'AllAboutCars';
 
+  constructor(public firebaseService : MyFirebaseService){}
 
+  isSignedIn = false
 
+  ngOnInit(){
+    this.isSignedIn = localStorage.getItem('user') !== null;
+  }
+
+  onSingout(){
+    this.isSignedIn = false;
+    this.firebaseService.logout();
+  }
 
 }
