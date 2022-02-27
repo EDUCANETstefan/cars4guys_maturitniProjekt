@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MyFirebaseService} from "../services/myFirebase.service";
 
 @Component({
   selector: 'app-vytvoreni-tematu',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VytvoreniTematuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public firebaseService : MyFirebaseService) { }
+
+  isSignedIn = false
 
   ngOnInit(): void {
+    this.isSignedIn = localStorage.getItem('user') !== null;
+    console.log(localStorage, this.isSignedIn)
+  }
+
+  vytvoritTema(nadpis: string, obsah: string) {
+    if (this.isSignedIn) {
+      console.log(nadpis, obsah)
+    } else alert("Musíš být přihlášen!")
+
   }
 
 }
