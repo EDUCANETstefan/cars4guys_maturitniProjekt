@@ -1,3 +1,10 @@
-
+<div *ngFor="let otazka of otazky">
+  <div>
+    <h2>{{ otazka.nadpis }}</h2>
+  </div>
+  <div>
+    {{ otazka.obsah }}
+  </div>
+</div>
 
 <a href="vytvoreniTematu">Vytvořit téma</a>

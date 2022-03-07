@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     this.isSignedIn = localStorage.getItem('user') !== null;
   }
 
-  async onSignup(email:string,password:string, password2:string){
+  async onSignup(email:string, username: string, password:string, password2:string){
     if (password == password2) {
       try{
         await this.firebaseService.singUp(email,password)
