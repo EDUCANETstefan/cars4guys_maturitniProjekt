@@ -20,7 +20,7 @@ export class VytvoreniTematuComponent implements OnInit {
   vytvoritTema(nadpis: string, obsah: string) {
     if (this.isSignedIn) {
       console.log(nadpis, obsah)
-    } else alert("Musíš být přihlášen!")
+    } else alert("Musíte být přihlášen!")
 
   }
 
