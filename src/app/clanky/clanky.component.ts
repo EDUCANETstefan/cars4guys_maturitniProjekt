@@ -16,7 +16,7 @@ export class ClankyComponent implements OnInit {
 
   ngOnInit(): void {
     const clanky = this.fireStore.collection<IClanek>("Clanky")
-    clanky.get().subscribe(d => this.clanky = d.docs.map(c => c.data()))
+    clanky.get().subscribe(d => this.clanky = d.docs.map((c: { data: () => any; }) => c.data()))
   }
 
 }
