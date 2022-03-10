@@ -1,3 +1,29 @@
+<a class="vytvoreni" href="vytvoreniTematu">Vytvořit téma</a>
+
+<div class="container">
+
+  <div class="item" *ngFor="let otazka of otazky">
+    <div>
+      <h2 style="margin: 5px">{{ otazka.nadpis }}</h2>
+    </div>
+    <div class="obsah">
+      {{ otazka.obsah }}
+    </div>
+
+    <p><br></p>
+
+    <div class="comments">
+      <form (ngSubmit)="(komentar.value)" class="komentForm">
+        <input type="text" #komentar placeholder="Komentar" name="komentar" id="komentar" required>
+        <button  type="submit" class="postComment">Vložit komentář</button>
+      </form>
+    </div>
 
 
-<a href="vytvoreniTematu">Vytvořit téma</a>
+
+  </div>
+
+</div>
+
+
+
