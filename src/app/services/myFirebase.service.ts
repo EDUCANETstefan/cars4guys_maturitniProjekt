@@ -16,10 +16,11 @@ export class MyFirebaseService {
       })
   }
 
-  async singUp(email: string, password : string) {
+  async singUp(email: string, password : string, username: string) {
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
       .then(res=>{
         localStorage.setItem('user', JSON.stringify(res.user))
+        res.user?.updateProfile({displayName : username})
       })
   }
 

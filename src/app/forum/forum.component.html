@@ -5,9 +5,19 @@
   <div class="item" *ngFor="let otazka of otazky">
     <div>
       <h2 style="margin: 5px">{{ otazka.nadpis }}</h2>
+      <p style="margin: 5px">{{ otazka.id }}</p>
     </div>
     <div class="obsah">
       {{ otazka.obsah }}
+    </div>
+
+    <div class="komentare">
+
+
+      <div class="item" *ngFor="let komentar of otazka.komentare">>
+        <p class="komentar">{{ komentar.obsah }} </p>
+      </div>
+
     </div>
 
     <p><br></p>
@@ -15,7 +25,7 @@
     <div class="comments">
       <form (ngSubmit)="(komentar.value)" class="komentForm">
         <input type="text" #komentar placeholder="Komentar" name="komentar" id="komentar" required>
-        <button  type="submit" class="postComment">Vložit komentář</button>
+        <button  (click)="pridatKomentar(komentar.value, otazka.id)" type="submit" class="postComment">Vložit komentář</button>
       </form>
     </div>
 

@@ -21,18 +21,19 @@ export class RegisterComponent implements OnInit {
   async onSignup(email: string, username: string, password: string, password2: string){
     if (password == password2) {
       try{
-        await this.firebaseService.singUp(email,password)
+        await this.firebaseService.singUp(email,password, username)
         if(this.firebaseService.isLoggedIn) { this.isSignedIn = true}
         await this.router.navigateByUrl("home");
+
       } catch (e) {
         alert(e);
       }
 
-    } alert("Passwords are not same!")
-
-
+    } else alert("Passwords are not same!")
 
   }
+
+
 
 
 }

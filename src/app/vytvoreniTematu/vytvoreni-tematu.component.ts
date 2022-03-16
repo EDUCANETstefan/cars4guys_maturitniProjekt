@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MyFirebaseService} from "../services/myFirebase.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {get} from "@angular/fire/database";
 
 @Component({
   selector: 'app-vytvoreni-tematu',
@@ -17,13 +18,13 @@ export class VytvoreniTematuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSignedIn = localStorage.getItem('user') !== null;
-    console.log(localStorage, this.isSignedIn)
   }
 
   async vytvoritTema(nadpis: string, obsah: string) {
     if (this.isSignedIn) {
       const clanky = this.fireStore.collection("Forum")
       await clanky.add({nadpis, obsah})
+
     } else alert("Musíš být přihlášen!")
 
   }

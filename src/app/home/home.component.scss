@@ -91,6 +91,13 @@ a {
     margin: 1%;
 }
 
+.photoHome{
+  background-image: url("https://images.wallpaperscraft.com/image/single/forest_aerial_view_trees_143496_2560x1024.jpg");
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 div li {
     list-style-type: none;
     display: flex;
@@ -103,6 +110,7 @@ div li {
     flex-direction: row;
     width: 100%;
     align-items: center;
+  //background-image: url("https://autobible.euro.cz/wp-content/uploads/2019/08/Audi-RS6-Avant-2020_09.jpg");
 }
 
 .item {
