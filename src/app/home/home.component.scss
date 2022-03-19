@@ -98,6 +98,12 @@ a {
   flex-direction: column;
 }
 
+.containerClanky {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 div li {
     list-style-type: none;
     display: flex;
@@ -110,7 +116,6 @@ div li {
     flex-direction: row;
     width: 100%;
     align-items: center;
-  //background-image: url("https://autobible.euro.cz/wp-content/uploads/2019/08/Audi-RS6-Avant-2020_09.jpg");
 }
 
 .item {

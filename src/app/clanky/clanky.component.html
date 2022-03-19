@@ -1,8 +1,20 @@
-<div *ngFor="let clanek of clanky">
-  <div>
-    {{ clanek.Nadpis }}
+<div style="margin-top: 30px" id="C">
+  <h3>Všechny články</h3>
+
+  <li *ngFor="let clanek of clanky"><p>{{ clanek.Nadpis }}</p></li>
+
+</div>
+
+<div class="container" *ngFor="let clanek of clanky">
+
+  <div class="item">
+    <div class="nadpis">
+      <h2>{{ clanek.Nadpis }}</h2>
+    </div>
+
+    <div class="obsah">
+      {{ clanek.Obsah }}
+    </div>
   </div>
-  <div>
-  {{ clanek.Obsah }}
-  </div>
+
 </div>

@@ -33,6 +33,7 @@ export class ForumComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     const otazky = this.fireStore.collection<IOtazkaData>("Forum")
     otazky.get().subscribe((d) => d.docs.forEach(async (c, i) => this.getOtazka(c).then(o => this.otazky = copySetArray(this.otazky, i, o))))

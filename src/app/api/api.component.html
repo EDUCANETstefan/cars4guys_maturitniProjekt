@@ -1,1 +1,46 @@
-<p>api works!</p>
+<form (ngSubmit)="sendRequest(vinkod.value)">
+  <div class="container">
+    <h1 style="margin-top: 20px">Ověření VIN kódu vašeho vozidla</h1>
+    <p>Zadejte VIN kód, abyste ověřili své vozilo</p>
+    <hr>
+
+    <label for="email"><b>VIN Kód</b></label>
+    <input type="text" #vinkod placeholder="Email" name="email" id="email" required>
+
+    <button type="submit" class="loginbtn">Odeslat VIN k ověření</button>
+  </div>
+
+</form>
+
+<div  *ngIf="this.odeslanReq === true" class="container">
+
+  <div *ngFor="let item of items" class="item">
+
+    <h3>{{item.label}}</h3>
+    <p>{{item.value}}</p>
+  </div>
+
+
+  <h2>Evoluce ceny</h2>
+  <div *ngFor="let price of priceHistory">
+
+    <div>
+      <p><strong>Datum:</strong> {{price.date}}</p>
+      <p><strong>Cena:</strong> {{price.price}}</p>
+      <p><strong>Měna:</strong> {{price.currency}}</p>
+    </div>
+
+  </div>
+
+  <h2>Evoluce kilometrů</h2>
+  <div *ngFor="let odometerKm of odometerHistory">
+
+    <div>
+      <p><strong>Datum:</strong> {{odometerKm.date}}</p>
+      <p><strong>Stav kilometrů:</strong> {{odometerKm.odometer}}</p>
+    </div>
+
+  </div>
+
+</div>
+

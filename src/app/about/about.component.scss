@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.main-text {
+  border: none;
+  h1 {
+    font-size: 4rem;
+  }
+  p {
+    text-align: center;
+  }
+  .blue {
+    color: rgb(73, 150, 254);
+  }
+}
+
+.line {
+  border-bottom: 1px solid #e7e7e7;
+  margin: 30px;
+}

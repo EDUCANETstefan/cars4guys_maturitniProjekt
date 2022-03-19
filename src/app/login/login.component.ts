@@ -22,10 +22,9 @@ export class LoginComponent implements OnInit {
     await this.firebaseService.singIn(email,password)
     if(this.firebaseService.isLoggedIn) {
       this.isSignedIn = true
-    }
-    if (!this.isSignedIn) {
-      alert("Špatně jste zadali email nebo heslo!")
-    }
+    } else alert("Špatně jste zadali email nebo heslo!")
+
+
 
     await this.router.navigateByUrl("home");
   }

@@ -8,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {VytvoreniTematuComponent} from "./vytvoreniTematu/vytvoreni-tematu.component";
 import {ZobrazeniClankuComponent} from "./zobrazeni-clanku/zobrazeni-clanku.component";
+import {ApiComponent} from "./api/api.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'api', component: ApiComponent},
   {path: 'vytvoreniTematu', component: VytvoreniTematuComponent},
   {path: 'zobrazeniClanku', component: ZobrazeniClankuComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

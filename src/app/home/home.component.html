@@ -27,19 +27,22 @@
         <div id="C">
             <h3>Oblíbené</h3>
 
-            <li *ngFor="let clanek of clanky"><a href="#A10">{{ clanek.Nadpis }}</a></li>
+            <li *ngFor="let clanek of clanky"><p >{{ clanek.Nadpis }}</p></li>
 
         </div>
 
-      <div   class="clanekContainer" style="border-bottom: 2px solid #e7e7e7;" *ngFor="let clanek of clanky">
-        <div class="nadpisClanku">
-          {{ clanek.Nadpis }}
-        </div>
-        <div class="obsahClanku">
-          {{ clanek.Obsah }}
+
+
+      <div class="containerClanky">
+        <div   class="clanekContainer" style="border-bottom: 2px solid #e7e7e7;" *ngFor="let clanek of clanky">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h4 class="card-title">{{ clanek.Nadpis }}</h4>
+              <p class="card-text" style="font-size: small">{{ clanek.Obsah }}</p>
+            </div>
+          </div>
         </div>
       </div>
-
 
 
     </div>

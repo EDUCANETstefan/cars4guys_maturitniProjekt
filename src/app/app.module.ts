@@ -18,6 +18,8 @@ import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {FormsModule} from "@angular/forms";
 import { ZobrazeniClankuComponent } from './zobrazeni-clanku/zobrazeni-clanku.component';
 import { VytvoreniTematuComponent } from './vytvoreniTematu/vytvoreni-tematu.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { VytvoreniTematuComponent } from './vytvoreniTematu/vytvoreni-tematu.com
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}],
   bootstrap: [AppComponent]
