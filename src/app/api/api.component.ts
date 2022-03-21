@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {IPriceData} from "./IPriceData";
 import {IOdometerData} from "./IOdometerData";
 import {IDecoceItem} from "./IDecoceItem";
-import * as crypto from "crypto";
+import * as sha1 from 'simple-sha1';
 
 @Component({
   selector: 'app-api',
@@ -400,7 +400,6 @@ export class ApiComponent implements OnInit {
 
   sendRequest(vincode: string) {
 
-    const shasum = crypto.createHash('sha1');
 
     const apiPrefix = "https://api.vindecoder.eu/3.1";
     const apikey = "ecf17af9bfff";   // Your API key
@@ -409,12 +408,11 @@ export class ApiComponent implements OnInit {
     const vin = (vincode).toUpperCase();
 
 
-    shasum.update(vin + "|" + id + "|" + apikey + "|" + secretkey)
-    const hash = shasum.digest("hex")
+
+    const hash = sha1.sync(vin + "|" + id + "|" + apikey + "|" + secretkey)
     const controlsum = hash.substring(0,10);
     // controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
     //const controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
-    shasum.digest(controlsum)
 
     console.log(vin + "|" + id + "|" + apikey + "|" + secretkey)
     console.log(controlsum)
