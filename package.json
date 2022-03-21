@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "bootstrap": "^5.1.3",
+    "crypto-browserify": "^3.12.0",
+    "crypto-libraries": "github:chrisveness/crypto",
     "firebase": "^9.4.0",
     "rxfire": "^6.0.0",
     "rxjs": "~7.5.0",

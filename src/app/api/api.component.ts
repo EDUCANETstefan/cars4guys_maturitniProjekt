@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IPriceData} from "./IPriceData";
 import {IOdometerData} from "./IOdometerData";
 import {IDecoceItem} from "./IDecoceItem";
+import * as crypto from "crypto";
 
 @Component({
   selector: 'app-api',
@@ -11,10 +12,12 @@ import {IDecoceItem} from "./IDecoceItem";
 })
 export class ApiComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   isSignedIn = false
   items: Array<IDecoceItem> = []
+
 
   data = {
     "decode": [
@@ -395,28 +398,44 @@ export class ApiComponent implements OnInit {
   odometerHistory: Array<IOdometerData> = []
   odeslanReq: boolean = false
 
-  sendRequest(vin: string) {
+  sendRequest(vincode: string) {
+
+    const shasum = crypto.createHash('sha1');
+
+    const apiPrefix = "https://api.vindecoder.eu/3.1";
+    const apikey = "ecf17af9bfff";   // Your API key
+    const secretkey = "60655b63c3";  // Your secret key
+    const id = "decode";
+    const vin = (vincode).toUpperCase();
+
+
+    shasum.update(vin + "|" + id + "|" + apikey + "|" + secretkey)
+    const hash = shasum.digest("hex")
+    const controlsum = hash.substring(0,10);
+    // controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
+    //const controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
+    shasum.digest(controlsum)
+
+    console.log(vin + "|" + id + "|" + apikey + "|" + secretkey)
+    console.log(controlsum)
+    //const data = file_get_contents("{$apiPrefix}/{$apikey}/{$controlsum}/decode/{$vin}.json", false);
+    //const result = json_decode($data);
 
     if (this.isSignedIn) {
       this.odeslanReq = true
-      for (let i = 0; i < this.data.decode.length; i++){
+      for (let i = 0; i < this.data.decode.length; i++) {
 
         if (this.data.decode[i].label === "Wheelbase Array (mm)" || this.data.decode[i].label === "Wheel Size Array" || this.data.decode[i].label === "Wheel Rims Size Array") {
           this.items.push({
             label: this.data.decode[i].label,
             value: (this.data.decode[i].value as any[]).join(", ")
           })
-        }else if (this.data.decode[i].label === "Price") {
+        } else if (this.data.decode[i].label === "Price") {
           this.priceHistory = (this.data.decode[i].value as IPriceData[])
-        }else if (this.data.decode[i].label === "Odometer (km)") {
+        } else if (this.data.decode[i].label === "Odometer (km)") {
           this.odometerHistory = (this.data.decode[i].value as IOdometerData[])
         } else this.items.push(this.data.decode[i] as IDecoceItem)
       }
-
-
-
-
-
     } else alert("Musíš být přihlášen!")
   }
 
