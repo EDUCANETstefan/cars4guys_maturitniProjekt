@@ -4,6 +4,7 @@ import {IPriceData} from "./IPriceData";
 import {IOdometerData} from "./IOdometerData";
 import {IDecoceItem} from "./IDecoceItem";
 import * as sha1 from 'simple-sha1';
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-api',
@@ -398,26 +399,37 @@ export class ApiComponent implements OnInit {
   odometerHistory: Array<IOdometerData> = []
   odeslanReq: boolean = false
 
-  sendRequest(vincode: string) {
+  async sendRequest(vincode: string) {
 
-
-    const apiPrefix = "https://api.vindecoder.eu/3.1";
+    const apiPrefix = "https://api.vindecoder.eu/3.1"
     const apikey = "ecf17af9bfff";   // Your API key
     const secretkey = "60655b63c3";  // Your secret key
     const id = "decode";
     const vin = (vincode).toUpperCase();
 
-
-
     const hash = sha1.sync(vin + "|" + id + "|" + apikey + "|" + secretkey)
     const controlsum = hash.substring(0,10);
-    // controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
-    //const controlsum = (shasum.digest(vin + "|" + id + "|" + apikey + "|" + secretkey)).substring(0, 10);
 
-    console.log(vin + "|" + id + "|" + apikey + "|" + secretkey)
-    console.log(controlsum)
-    //const data = file_get_contents("{$apiPrefix}/{$apikey}/{$controlsum}/decode/{$vin}.json", false);
-    //const result = json_decode($data);
+    if (this.isSignedIn) {
+      // @ts-ignore
+      this.data = await firstValueFrom(this.http.get(apiPrefix + "/" + apikey + "/" + controlsum + "/" + "decode" + "/" + vin + ".json"));
+
+
+      this.odeslanReq = true
+      for (let i = 0; i < this.data.decode.length; i++) {
+
+        if (this.data.decode[i].label === "Wheelbase Array (mm)" || this.data.decode[i].label === "Wheel Size Array" || this.data.decode[i].label === "Wheel Rims Size Array") {
+          this.items.push({
+            label: this.data.decode[i].label,
+            value: (this.data.decode[i].value as any[]).join(", ")
+          })
+        } else if (this.data.decode[i].label === "Price") {
+          this.priceHistory = (this.data.decode[i].value as IPriceData[])
+        } else if (this.data.decode[i].label === "Odometer (km)") {
+          this.odometerHistory = (this.data.decode[i].value as IOdometerData[])
+        } else this.items.push(this.data.decode[i] as IDecoceItem)
+      }
+    } else alert("Musíš být přihlášen!")
 
     if (this.isSignedIn) {
       this.odeslanReq = true
